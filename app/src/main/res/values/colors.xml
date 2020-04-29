@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFA0CA</color>
+    <!-- Pantone 239 -->
+    <color name="colorPrimaryDark">#D26394</color>
+    <!-- Pantone 241 -->
+    <color name="colorPrimarySemiDark">#DF96B6</color>
+    <!-- Pantone 240 -->
+    <color name="colorPrimaryLight">#FFB5D6</color>
+    <!-- Pantone 236 -->
+    <color name="colorPrimarySemiLight">#FFACD0</color>
+    <!-- Pantone 237 -->
+    <color name="colorAccent">#D7FFA0</color>
+    <color name="colorWhite">#FFFFFF</color>
+</resources>

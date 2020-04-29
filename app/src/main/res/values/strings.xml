@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Violets</string>
+    <string name="senpolia_image">Фотография Сенполии</string>
+    <string name="rossijskaya_selektsiya">Отечественная Селекция</string>
+    <string name="zarubezhnaya_selektsiya">Зарубежная Селекция</string>
+    <string name="add_to_favourite">Добавлено в Избранное</string>
+    <string name="remove_from_favourite">Удалено из Избранного</string>
+    <string name="item_main">Главная</string>
+    <string name="item_favourite">Избранное</string>
+</resources>
