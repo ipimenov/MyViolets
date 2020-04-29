@@ -35,7 +35,7 @@ public class ContentUtils {
     public static ArrayList<Violet> getVioletsFromContent(String content) { // content - резултат метода NetworkUtils.getContentFromNetwork(каталог, страница)
         ArrayList<Violet> result = new ArrayList<>();
         if (content == null) {
-            return result;
+            return null;
         }
 
         Pattern patternViolet = Pattern.compile(REG_EXP_VIOLET);

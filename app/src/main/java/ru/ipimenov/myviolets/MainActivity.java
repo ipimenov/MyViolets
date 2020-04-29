@@ -1,6 +1,9 @@
 package ru.ipimenov.myviolets;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,7 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import ru.ipimenov.myviolets.data.MainViewModel;
 import ru.ipimenov.myviolets.data.Violet;
 import ru.ipimenov.myviolets.utils.ContentUtils;
 import ru.ipimenov.myviolets.utils.NetworkUtils;
@@ -26,10 +31,13 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewThumbnails;
     private VioletAdapter violetAdapter;
 
+    private MainViewModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         switchCatalog = findViewById(R.id.switchCatalog);
         textViewRuUaSelection = findViewById(R.id.textViewRuUaSelection);
         textViewForeignSelection = findViewById(R.id.textViewForeignSelection);
@@ -60,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Конец списка", Toast.LENGTH_SHORT).show();
             }
         });
+        LiveData<List<Violet>> violetsFromLiveData = viewModel.getViolets();
+        violetsFromLiveData.observe(this, new Observer<List<Violet>>() {
+            @Override
+            public void onChanged(List<Violet> violets) {
+                violetAdapter.setViolets(violets);
+            }
+        });
     }
 
     public void onClickSetRuUaSelection(View view) {
@@ -83,9 +98,18 @@ public class MainActivity extends AppCompatActivity {
             textViewRuUaSelection.setTextColor(getResources().getColor(R.color.colorAccent));
             catalog = NetworkUtils.RU_UA_SELECTION;
         }
-        String content = NetworkUtils.getContentFromNetwork(catalog, 2);
+        downloadData(catalog, 2);
+    }
+
+    private void downloadData(int catalog, int page) {
+        String content = NetworkUtils.getContentFromNetwork(catalog, page);
         ArrayList<Violet> violets = ContentUtils.getVioletsFromContent(content);
-        violetAdapter.setViolets(violets);
+        if (violets != null && !violets.isEmpty()) {
+            viewModel.deleteAllViolets();
+            for (Violet violet : violets) {
+                viewModel.insertViolet(violet);
+            }
+        }
     }
 
 //    private void setCatalogOfViolet(boolean isForeignSelection) {

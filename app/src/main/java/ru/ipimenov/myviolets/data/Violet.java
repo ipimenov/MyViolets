@@ -1,7 +1,12 @@
 package ru.ipimenov.myviolets.data;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "violets")
 public class Violet {
 
+    @PrimaryKey
     private int violetCounterId; // id по порядку загрузки
     private int violetId; // id если есть картинка, если нет 0
     private String violetName; // название сорта

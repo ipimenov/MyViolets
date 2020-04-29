@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ru.ipimenov.myviolets.data.Violet;
 
 public class VioletAdapter extends RecyclerView.Adapter<VioletAdapter.VioletViewHolder> {
 
-    private ArrayList<Violet> violets;
+    private List<Violet> violets;
     private OnVioletThumbnailClickListener onVioletThumbnailClickListener;
     private OnReachEndListener onReachEndListener;
 
@@ -80,17 +81,17 @@ public class VioletAdapter extends RecyclerView.Adapter<VioletAdapter.VioletView
         }
     }
 
-    public void setViolets(ArrayList<Violet> violets) {
+    public void setViolets(List<Violet> violets) {
         this.violets = violets;
         notifyDataSetChanged();
     }
 
-    public void addViolets(ArrayList<Violet> violets) {
+    public void addViolets(List<Violet> violets) {
         this.violets.addAll(violets);
         notifyDataSetChanged();
     }
 
-    public ArrayList<Violet> getViolets() {
+    public List<Violet> getViolets() {
         return violets;
     }
 }
