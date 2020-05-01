@@ -3,8 +3,6 @@
     <string name="senpolia_image">Фотография Сенполии</string>
     <string name="rossijskaya_selektsiya">Отечественная Селекция</string>
     <string name="zarubezhnaya_selektsiya">Зарубежная Селекция</string>
-    <string name="add_to_favourite">Добавлено в Избранное</string>
-    <string name="remove_from_favourite">Удалено из Избранного</string>
     <string name="item_main">Главная</string>
     <string name="item_favourite">Избранное</string>
     <string name="image_violet">Фотография фиалки</string>
@@ -14,4 +12,6 @@
     <string name="label_violet_year">Год создания</string>
     <string name="label_violet_overview">Описание:</string>
     <string name="image_favourite">Изображение папки избранного</string>
+    <string name="add_to_favourite">Добавлено в Избранное</string>
+    <string name="remove_from_favourite">Удалено из Избранного</string>
 </resources>

@@ -30,10 +30,10 @@ public class ContentUtils {
     // Ссылка на заглушку
     private static final String PATH_TO_BLANC = "/images/imagesizer/russian-ukainian-selection/zaglushka-w.jpg";
 
-//    private static int violetCounterId = 0;
+    private static int violetCounterId = 0;
 
     public static ArrayList<Violet> getVioletsFromContent(String content) { // content - резултат метода NetworkUtils.getContentFromNetwork(каталог, страница)
-        int violetCounterId = 0;
+//        int violetCounterId = 0;
         ArrayList<Violet> result = new ArrayList<>();
         if (content == null) {
             return null;

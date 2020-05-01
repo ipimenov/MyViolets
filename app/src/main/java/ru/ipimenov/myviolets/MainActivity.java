@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     private MainViewModel viewModel;
 
-    private int id;
+//    private int id;
+    private String violetName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +67,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onVioletThumbnailClick(int position) {
                 Violet violet = violetAdapter.getViolets().get(position);
-                id = violet.getVioletCounterId();
+//                id = violet.getVioletCounterId();
+                violetName = violet.getVioletName();
+
 
                 // TODO
                 Log.i("My", violet.getVioletImagePath() + "");
 
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                intent.putExtra("id", id);
+                intent.putExtra("violetName", violetName);
                 startActivity(intent);
 //                Toast.makeText(MainActivity.this, "Позиция" + position, Toast.LENGTH_SHORT).show();
             }
