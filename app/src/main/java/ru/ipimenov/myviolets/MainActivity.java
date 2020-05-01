@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     private MainViewModel viewModel;
 
+    private int id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,22 +53,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 setCatalogOfViolet(isChecked);
+
+                // TODO
                 for (Violet violet : violetAdapter.getViolets()) {
                     Log.i("My", violet.getVioletCounterId() + "");
                 }
+
             }
         });
         switchCatalog.setChecked(false);
         violetAdapter.setOnVioletThumbnailClickListener(new VioletAdapter.OnVioletThumbnailClickListener() {
             @Override
             public void onVioletThumbnailClick(int position) {
-                Toast.makeText(MainActivity.this, "Позиция" + position, Toast.LENGTH_SHORT).show();
+                Violet violet = violetAdapter.getViolets().get(position);
+                id = violet.getVioletCounterId();
+
+                // TODO
+                Log.i("My", violet.getVioletImagePath() + "");
+
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+//                Toast.makeText(MainActivity.this, "Позиция" + position, Toast.LENGTH_SHORT).show();
             }
         });
         violetAdapter.setOnReachEndListener(new VioletAdapter.OnReachEndListener() {
             @Override
             public void onReachEnd() {
-                Toast.makeText(MainActivity.this, "Конец списка", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Конец списка", Toast.LENGTH_SHORT).show();
             }
         });
         LiveData<List<Violet>> violetsFromLiveData = viewModel.getViolets();

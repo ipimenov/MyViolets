@@ -7,4 +7,11 @@
     <string name="remove_from_favourite">Удалено из Избранного</string>
     <string name="item_main">Главная</string>
     <string name="item_favourite">Избранное</string>
+    <string name="image_violet">Фотография фиалки</string>
+    <string name="label_violet_name">Название:</string>
+    <string name="text_plug">Текст Текст Текст</string>
+    <string name="label_violet_breeder">Селекционер</string>
+    <string name="label_violet_year">Год создания</string>
+    <string name="label_violet_overview">Описание:</string>
+    <string name="image_favourite">Изображение папки избранного</string>
 </resources>
